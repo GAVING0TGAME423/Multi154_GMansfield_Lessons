@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : NetworkBehaviour
 {
     public GameObject[] Lilypadobjs;
-    void Start()
+   public override void OnStartServer()
     {
         InvokeRepeating("SpawnLilyPad", 1.0f, 3.0f);
     }
@@ -19,7 +20,8 @@ public class SpawnManager : MonoBehaviour
     {
         foreach(GameObject Lilypad in Lilypadobjs)
         {
-            Instantiate(Lilypad);
+            GameObject templilypad = Instantiate(Lilypad);
+            NetworkServer.Spawn(templilypad);
         }
         
     }
