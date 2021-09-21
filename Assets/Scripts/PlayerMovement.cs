@@ -33,7 +33,13 @@ public class PlayerMovement : NetworkBehaviour
         float VerticalMove = Input.GetAxis("Vertical");
         direction = new Vector3(HorizontalMove, 0, VerticalMove);
     }
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, direction * 10);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawRay(transform.position, RBPlayer.velocity * 5);
+    }
 
     void FixedUpdate()
     {
@@ -61,6 +67,7 @@ public class PlayerMovement : NetworkBehaviour
             index++;
         }
         RBPlayer.MovePosition(spawnpoints[index].transform.position);
+        RBPlayer.velocity = Vector3.zero;
     }
 
    
