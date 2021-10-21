@@ -7,6 +7,7 @@ public class BearBrain : MonoBehaviour
     private Bot BotScript;
     private Vector3 hivepos;
     private bool hivedropped = false;
+    private bool isStopped = false;
     void Start()
     {
         BotScript = GetComponent<Bot>();
@@ -20,30 +21,39 @@ public class BearBrain : MonoBehaviour
     
     void Update()
     {
-        if (hivedropped)
+        if (!isStopped)
         {
-            Debug.Log("Chasing Hive");
-            BotScript.Seek(hivepos);
-        }
-        else
-        {
-
-
-            if (BotScript.CanTargetSeeMe())
+            if (hivedropped)
             {
-                Debug.Log("Evading");
-                BotScript.Evade();
-            }
-            else if (BotScript.CanSeeTarget())
-            {
-                Debug.Log("Pursuing");
-                BotScript.Pursue();
+                Debug.Log("Chasing Hive");
+                BotScript.Seek(hivepos);
             }
             else
             {
-                Debug.Log("Wandering");
-                BotScript.Wander();
+                if (BotScript.CanTargetSeeMe())
+                {
+                    Debug.Log("Evading");
+                    BotScript.Evade();
+                }
+                else if (BotScript.CanSeeTarget())
+                {
+                    Debug.Log("Pursuing");
+                    BotScript.Pursue();
+                }
+                else
+                {
+                    Debug.Log("Wandering");
+                    BotScript.Wander();
+                }
             }
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision .collider .CompareTag("Player"))
+        {
+            BotScript.Stop();
+            isStopped = true;
         }
     }
 }
