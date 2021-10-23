@@ -11,6 +11,7 @@ public class NavPlayerMovement : MonoBehaviour
     float rotate = 0;
     private Animator animator;
     private Camera camera;
+    private Transform LookTarget; 
 
     public delegate void DropHive(Vector3 pos);
     public static event DropHive DroppedHive;
@@ -20,6 +21,7 @@ public class NavPlayerMovement : MonoBehaviour
         rgBody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         camera = GetComponentInChildren<Camera>();
+        LookTarget = GameObject.Find("Head Aim Target").transform;
     }
     void Update()
     {
@@ -57,6 +59,10 @@ public class NavPlayerMovement : MonoBehaviour
             animator.SetTrigger("Died");
             StartCoroutine(Zoomout());
         }
+        else
+        {
+            animator.SetTrigger("Twitch Left Ear");
+        }
     }
     IEnumerator Zoomout()
     {
@@ -65,6 +71,35 @@ public class NavPlayerMovement : MonoBehaviour
         {
             camera.transform.Translate(camera.transform.forward * -1 * 15.0f/ITERATIONS);
             yield return new WaitForSeconds(1.0f / ITERATIONS);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Hazard"))
+        {
+            // LookTarget.position = other.transform.position;
+            StartCoroutine(LookandLookaway(LookTarget.position, other.transform.position));
+        }
+    }
+    private IEnumerator LookandLookaway(Vector3 targetpos, Vector3 hazardpos)
+    {
+        Vector3 targetdir = targetpos - transform.position;
+        Vector3 hazarddir = hazardpos - transform.position;
+
+        float angle = Vector2.SignedAngle(new Vector2(targetpos.x, targetpos.z), new Vector2(hazardpos.x, hazardpos.z));
+
+        const int INTERVALS = 20;
+        const float Interval = 0.5f / INTERVALS;
+        float angleinterval = angle / INTERVALS;
+        for(int i=0; i < INTERVALS; i++)
+        {
+            LookTarget.RotateAround(transform.position, Vector3.up, -angleinterval);
+            yield return new WaitForSeconds(Interval);
+        }
+        for (int i = 0; i < INTERVALS; i++)
+        {
+            LookTarget.RotateAround(transform.position, Vector3.up, angleinterval);
+            yield return new WaitForSeconds(Interval);
         }
     }
 }
