@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RiverWaterMat
+  m_Shader: {fileID: -6465566751694194690, guid: 3dcb1d651c87905458720619f8956506,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_107e0cca19f849b5ab132735c6168053: 0
+    - Vector1_1cd2ad50b43d4beb89e219fe8df22a85: 1.45
+    - Vector1_1d2965a643d44f0fbf27b839866e6cff: 0.2
+    - Vector1_4a499aef1c50490798c7b090e1f4d055: 1.54
+    - Vector1_834d0f6024ba4d0e8445d7308c94a5cb: 0.5
+    - Vector1_94ee2c58213c446f83463568caa183e2: 35.3
+    - Vector1_94f0e44efa2b4d799e513a1392792427: 2
+    - Vector1_95d1e0494ca14ad3b39d80a6b2002c36: 9.2
+    - Vector1_a116079aa5b045e3bd37060e69526261: 0.74
+    - Vector1_e5c81b66dabc4d399fe81f73b7978222: 3.62
+    m_Colors:
+    - Color_17b04992f4774f6093f3839aff4ac736: {r: 0.106492974, g: 0.25591758, b: 0.8396226,
+        a: 0}
+    - Color_6a7df482d77b4ae091c6a24a009c27aa: {r: 0.14404476, g: 0.09922471, b: 0.2735849,
+        a: 0}
+    - Color_7a40d6c1b54a4b339099f6eeb565733d: {r: 0.050433144, g: 0.051575508, b: 0.05660379,
+        a: 0}
+    - Color_b8f7e9027c3f4d3a9dd6109f226370e2: {r: 0.20442231, g: 0.33538032, b: 0.3584906,
+        a: 0}
+    - Vector2_44a7bad9831d41dfa335d6a4349259ef: {r: -0.5, g: 0.13, b: 0, a: 0}
+    - Vector2_9aca3f07648a4804a5d6f7e245c8aa80: {r: 0.99, g: 1, b: 0, a: 0}
+    - WHColor: {r: 0.34403306, g: 0.5680056, b: 0.6698113, a: 0}
+  m_BuildTextureStacks: []
