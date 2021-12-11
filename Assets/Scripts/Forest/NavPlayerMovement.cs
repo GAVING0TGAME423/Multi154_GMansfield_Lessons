@@ -48,8 +48,10 @@ public class NavPlayerMovement : MonoBehaviour
         rgBody.MoveRotation(Quaternion.Euler(rot));
         rotate = 0;
 
-        Vector3 move = transform.forward * trans;
-        rgBody.velocity = move * speed * Time.deltaTime;
+        Vector3 move = transform.forward * trans* speed ;
+        move.y = rgBody.velocity.y;
+        rgBody.velocity = move; // * Time.deltaTime;
+
         trans = 0;
     }
     private void OnCollisionEnter(Collision collision)
